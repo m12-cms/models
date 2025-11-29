@@ -1,5 +1,5 @@
 {
-    "name": "m12/models",
+    "name": "m12-cms/models",
     "description": "Reusable Eloquent model package for M12 CMS",
     "type": "library",
     "license": "Apache-2.0",
