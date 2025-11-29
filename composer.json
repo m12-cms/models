@@ -1,0 +1,24 @@
+{
+    "name": "m12/models",
+    "description": "Reusable Eloquent model package for M12 CMS",
+    "type": "library",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-4": {
+            "M12\\Models\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "M12\\Models\\M12ModelsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2",
+        "illuminate/database": "^11.0",
+        "illuminate/support": "^11.0"
+    }
+}
