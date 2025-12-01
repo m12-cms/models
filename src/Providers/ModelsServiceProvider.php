@@ -1,10 +1,10 @@
 <?php
 
-namespace M12\Models;
+namespace M12\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class M12ModelsServiceProvider extends ServiceProvider
+class ModelsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
