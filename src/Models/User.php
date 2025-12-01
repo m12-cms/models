@@ -5,6 +5,7 @@ namespace M12\Models;
 use Filament\Models\Contracts\FilamentUser as FilamentUserContract;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -13,6 +14,7 @@ class User extends Authenticatable implements FilamentUserContract, HasAvatar
 {
     use HasApiTokens;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * Mass assignable attributes.
