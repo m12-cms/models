@@ -12,6 +12,11 @@ This package centralizes domain models, ensuring consistency across the admin pa
 
 ## Installation
 
+Laravel Sanctum is required for User model
+```
+composer require laravel/sanctum
+```
+
 Add to your application's composer.json:
 
 ```
@@ -33,7 +38,7 @@ composer require m12-cms/models
 ## Usage
 
 ```php
-use M12\Models\Models\Page;
+use M12\Models\User;
 ```
 
 ## License
