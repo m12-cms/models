@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace M12\Models;
 
 use Filament\Models\Contracts\FilamentUser as FilamentUserContract;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,6 +18,7 @@ class User extends Authenticatable implements FilamentUserContract, HasAvatar
     use HasApiTokens;
     use Notifiable;
     use SoftDeletes;
+    use HasFactory;
 
     /**
      * Mass assignable attributes.
