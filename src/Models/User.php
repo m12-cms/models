@@ -50,4 +50,9 @@ class User extends Authenticatable implements FilamentUserContract, HasAvatar
     {
         return null;
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\UserFactory::new();
+    }
 }
