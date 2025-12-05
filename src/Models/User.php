@@ -16,9 +16,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements FilamentUserContract, HasAvatar
 {
     use HasApiTokens;
+    use HasFactory;
     use Notifiable;
     use SoftDeletes;
-    use HasFactory;
 
     /**
      * Mass assignable attributes.
