@@ -16,11 +16,11 @@ abstract class TestCase extends BaseTestCase
 
     protected function getPackageMigrationsPath($app)
     {
-        return __DIR__ . '/../database/migrations';
+        return __DIR__.'/../database/migrations';
     }
 
     protected function defineDatabaseMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }
