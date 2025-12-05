@@ -6,7 +6,12 @@
     "autoload": {
         "psr-4": {
             "M12\\": "src/",
-            "M12\\Models\\Database\\Factories\\": "database/factories/"
+            "M12\\Models\\Database\\Factories\\": "database/factories/",
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "M12\\Models\\Tests\\": "tests/"
         }
     },
     "extra": {

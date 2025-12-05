@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# Composer package ignores
+# ------------------------------------------------------
+
+/vendor/
+/composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+
+# PHPStan
+phpstan.result.cache
+
+# Pint cache
+.pint.json
+.pint.cache
+
+# Coverage
+/coverage/
+/clover.xml
+
+# Logs
+*.log
+
+# Cache
+/.cache/
+/storage/
+/tmp/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Testbench temporary Laravel installation
+# (created automatically under vendor/orchestra/testbench-core)
+vendor/orchestra/testbench-core/laravel/storage/
+vendor/orchestra/testbench-core/laravel/bootstrap/cache/*.php
+vendor/orchestra/testbench-core/laravel/.env
+vendor/orchestra/testbench-core/laravel/storage.log
+
+# Prevent nested .gitignore files from vendor being tracked
+**/vendor/**/.gitignore
+
+# Node (if ever used)
+node_modules/
+
