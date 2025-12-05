@@ -7,6 +7,9 @@ namespace M12\Models\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use M12\Models\User;
 
+/**
+ * @extends Factory<User>
+ */
 class UserFactory extends Factory
 {
     protected $model = User::class;
