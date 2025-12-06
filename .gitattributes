@@ -1,0 +1,28 @@
+# -------------------------------
+# Ignore files in distribution
+# -------------------------------
+
+/.github               export-ignore
+/tests                 export-ignore
+/.gitignore            export-ignore
+/.gitattributes        export-ignore
+/phpunit.xml           export-ignore
+/pint.json             export-ignore
+/phpstan.neon          export-ignore
+/composer.dev.json     export-ignore
+/.editorconfig         export-ignore
+/.phpunit.result.cache export-ignore
+/.idea                 export-ignore
+/.vscode               export-ignore
+
+
+# -------------------------------
+# Normalize line endings
+# -------------------------------
+* text=auto eol=lf
+
+
+# -------------------------------
+# Keep only package-required files
+# (src, migrations, factories, config, composer.json)
+# -------------------------------

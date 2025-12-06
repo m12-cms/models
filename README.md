@@ -1,46 +1,65 @@
-# M12 CMS Models Package
+# 📦 M12 CMS — Models Package
 
-Reusable Eloquent model package for the M12 CMS ecosystem.  
-This package centralizes domain models, ensuring consistency across the admin panel, public website, and additional services.
+**Reusable Eloquent models shared across the M12 CMS ecosystem.**
 
-## Features
+This package provides the core `User` model, factories, and migrations used by both **Admin Panel** and **Frontend** applications.  
+It is framework-agnostic inside the Laravel ecosystem and automatically integrates with your application through service providers.
 
-- Shared Eloquent models
-- Lightweight Laravel service provider
-- PSR-4 autoloading
-- Apache License 2.0
+## 🚀 Installation
 
-## Installation
+Require the package via Composer:
 
-Laravel Sanctum is required for User model
-```
-composer require laravel/sanctum
-```
-
-Add to your application's composer.json:
-
-```
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/m12-cms/models"
-    }
-]
-```
-
-Then:
-
-```
+```bash
 composer require m12-cms/models
 ```
 
+Laravel will automatically register the package thanks to auto-discovery.
 
-## Usage
+## 📚 Features
 
-```php
-use M12\Models\User;
+- Reusable `User` model compatible with Laravel 12  
+- Built-in **Soft Deletes**, API tokens, notifications  
+- Fully compatible with:
+  - **Filament 4** (optional)  
+  - **Laravel Sanctum**  
+- Packaged **migrations**  
+- Packaged **model factory**  
+- Testbench-ready test suite  
+- SQLite-ready for CI  
+
+## 🧩 Included Components
+
+### User Model
+
+```
+src/Models/User.php
 ```
 
-## License
+### Factories
 
-Apache License 2.0.
+```
+database/factories/UserFactory.php
+```
+
+### Migrations
+
+```
+database/migrations/
+```
+
+## 🧪 Testing
+
+```
+vendor/bin/phpunit --testdox
+```
+
+## 📦 Releasing a Version
+
+```
+git tag -a v0.x.x -m "Release"
+git push --tags
+```
+
+## 📜 License
+
+Apache-2.0
