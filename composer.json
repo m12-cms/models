@@ -38,13 +38,6 @@
     "scripts": {
         "test": "phpunit",
         "analyse": "phpstan analyse",
-        "pint": "pint",
-        "dev:setup": "bash -lc \"if [ -d .git ]; then echo '-> Installing dev tools...'; npm install --no-audit --no-fund; npm run dev:hooks; else echo '-> .git not found, skipping dev setup'; fi\""
-    },
-    "post-install-cmd": [
-        "bash -lc \"if [ -d .git ]; then composer dev:setup || true; fi\""
-    ],
-    "post-update-cmd": [
-        "bash -lc \"if [ -d .git ]; then composer dev:setup || true; fi\""
-    ]
+        "pint": "pint"
+    }
 }
