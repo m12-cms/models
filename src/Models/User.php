@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace M12\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,6 +12,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use M12\Models\Database\Factories\UserFactory;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
