@@ -24,7 +24,12 @@ use M12\Models\Database\Factories\UserFactory;
 class User extends Authenticatable
 {
     use HasApiTokens;
+
+    /**
+     * @use HasFactory<UserFactory>
+     */
     use HasFactory;
+
     use Notifiable;
     use SoftDeletes;
 

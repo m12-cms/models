@@ -22,7 +22,7 @@ abstract class TestCase extends BaseTestCase
             base_path('vendor/laravel/sanctum/database/migrations')
         );
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->artisan('migrate', ['--database' => 'testing']);
     }

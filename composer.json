@@ -38,6 +38,11 @@
     "scripts": {
         "test": "phpunit",
         "analyse": "phpstan analyse",
-        "pint": "pint"
+        "pint": "pint",
+        "check": [
+            "composer pint",
+            "composer analyse",
+            "composer test"
+        ]
     }
 }
