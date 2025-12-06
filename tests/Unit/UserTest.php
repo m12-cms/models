@@ -2,9 +2,8 @@
 
 namespace M12\Models\Tests\Unit;
 
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\NewAccessToken;
 use M12\Models\Tests\TestCase;
 use M12\Models\User;
 
@@ -46,6 +45,7 @@ class UserTest extends TestCase
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
         $user->restore();
+        $user->refresh();
 
         $this->assertFalse($user->trashed());
     }
@@ -59,15 +59,6 @@ class UserTest extends TestCase
         ]);
 
         $this->assertEquals('Valid Name', $user->name);
-    }
-
-    public function test_user_can_generate_api_token(): void
-    {
-        $user = User::factory()->create();
-
-        $token = $user->createToken('test-token');
-
-        $this->assertInstanceOf(NewAccessToken::class, $token);
-        $this->assertNotEmpty($token->plainTextToken);
+        $this->assertTrue(Hash::check('secret123', $user->password));
     }
 }

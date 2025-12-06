@@ -1,65 +1,132 @@
-# 📦 M12 CMS — Models Package
+# M12 CMS – Models Package
 
-**Reusable Eloquent models shared across the M12 CMS ecosystem.**
+A reusable Eloquent models package for the M12 CMS platform.  
+This package provides a standalone `User` model implementation based on Laravel 12, including migrations, factories, Sanctum API token support, and integration with modern Laravel development practices.
 
-This package provides the core `User` model, factories, and migrations used by both **Admin Panel** and **Frontend** applications.  
-It is framework-agnostic inside the Laravel ecosystem and automatically integrates with your application through service providers.
+---
 
-## 🚀 Installation
+## Features
 
-Require the package via Composer:
+- Fully independent `User` model (`M12\Models\User`)
+- Laravel Sanctum API token support
+- Soft deletes support
+- Dedicated migration for the `users` table
+- User factory for testing and seeding
+- PSR-4 autoloading for package development
+- Compatible with Orchestra Testbench for isolated testing
+- Apache 2.0 licensed
+
+---
+
+## Requirements
+
+- PHP **8.2+**
+- Laravel **12.x**
+- Laravel Sanctum **4.x**
+
+---
+
+## Installation
+
+Install the package via Composer:
 
 ```bash
 composer require m12-cms/models
 ```
 
-Laravel will automatically register the package thanks to auto-discovery.
+The service provider is auto-discovered by Laravel.
 
-## 📚 Features
+---
 
-- Reusable `User` model compatible with Laravel 12  
-- Built-in **Soft Deletes**, API tokens, notifications  
-- Fully compatible with:
-  - **Filament 4** (optional)  
-  - **Laravel Sanctum**  
-- Packaged **migrations**  
-- Packaged **model factory**  
-- Testbench-ready test suite  
-- SQLite-ready for CI  
+## Migrations
 
-## 🧩 Included Components
+By default, the package loads its own migrations automatically.
 
-### User Model
+If you want to publish the migrations into your application, run:
 
-```
-src/Models/User.php
+```bash
+php artisan vendor:publish --tag=m12-models-migrations
 ```
 
-### Factories
-
-```
-database/factories/UserFactory.php
-```
-
-### Migrations
+This will copy all package migrations to:
 
 ```
 database/migrations/
 ```
 
-## 🧪 Testing
+---
 
+## Usage
+
+You may use the `User` model provided by this package as the primary authentication model of your application.
+
+### Example:
+
+```php
+use M12\Models\User;
+
+$user = User::create([
+    'name' => 'John Doe',
+    'email' => 'john@example.com',
+    'password' => 'secret123',
+]);
 ```
-vendor/bin/phpunit --testdox
+
+### API Token Generation (Sanctum)
+
+```php
+$token = $user->createToken('api')->plainTextToken;
 ```
 
-## 📦 Releasing a Version
+---
 
+## Testing
+
+This package includes a full Testbench setup.
+
+To run tests:
+
+```bash
+vendor/bin/phpunit
 ```
-git tag -a v0.x.x -m "Release"
-git push --tags
+
+### Testbench Notes
+
+- Sanctum migrations are loaded automatically.
+- Package migrations are executed using the Testbench migration loader.
+- SQLite in-memory database is used for isolation.
+
+---
+
+## Development
+
+Install dependencies:
+
+```bash
+composer install
 ```
 
-## 📜 License
+Run code quality tools:
 
-Apache-2.0
+```bash
+composer pint
+composer analyse
+```
+
+---
+
+## Changelog
+
+All notable changes will be documented in release tags.
+
+---
+
+## Versioning
+
+This package follows Semantic Versioning (https://semver.org/).
+
+---
+
+## License
+
+This package is open-source software licensed under the **Apache License 2.0**.
