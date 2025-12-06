@@ -14,13 +14,15 @@ abstract class TestCase extends BaseTestCase
         ];
     }
 
-    protected function getPackageMigrationsPath($app)
-    {
-        return __DIR__.'/../database/migrations';
-    }
-
     protected function defineDatabaseMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        // Миграции ИЗ ПАКЕТА (users, sessions, reset tokens, soft deletes)
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        // Sanctum миграции — вручную
+        $this->artisan('migrate', [
+            '--database' => 'testing',
+            '--path' => 'vendor/laravel/sanctum/database/migrations',
+        ]);
     }
 }
