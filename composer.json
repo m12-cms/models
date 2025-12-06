@@ -5,13 +5,13 @@
     "license": "Apache-2.0",
     "autoload": {
         "psr-4": {
-            "M12\\": "src/",
-            "M12\\Models\\Database\\Factories\\": "database/factories/"
+            "M12\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "M12\\Models\\Tests\\": "tests/"
+            "M12\\Models\\Tests\\": "tests/",
+            "M12\\Models\\Database\\Factories\\": "database/factories/"
         }
     },
     "extra": {
