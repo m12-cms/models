@@ -2,14 +2,13 @@
   "name": "m12-models-dev",
   "private": true,
   "scripts": {
-    "prepare": "husky",
-    "dev:hooks": "node ./setup-hooks.js"
+    "prepare": "node setup-hooks.js"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.0.0",
     "@commitlint/cli": "^17.5.0",
-    "@commitlint/config-conventional": "^17.5.0"
+    "@commitlint/config-conventional": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.0.0"
   },
   "lint-staged": {
     "*.php": [
