@@ -11,12 +11,20 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Create Release
+      - name: Setup Node (required by some release actions — optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Create GitHub Release
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
           prerelease: false
