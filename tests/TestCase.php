@@ -17,7 +17,7 @@ abstract class TestCase extends BaseTestCase
     protected function defineDatabaseMigrations()
     {
         // Миграции ИЗ ПАКЕТА (users, sessions, reset tokens, soft deletes)
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // Sanctum миграции — вручную
         $this->artisan('migrate', [
