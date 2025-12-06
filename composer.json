@@ -39,10 +39,12 @@
         "test": "phpunit",
         "analyse": "phpstan analyse",
         "pint": "pint",
-        "dev:setup": "bash -lc \"if [ -d .git ]; then echo '-> Installing node dependencies and hooks (dev)...'; npm ci --no-audit --no-fund; npm run dev:hooks; else echo '-> .git not found, skipping dev hooks setup'; fi\"",
+        "dev:setup": "bash -lc \"if [ -d .git ]; then echo '-> Installing dev tools...'; npm install --no-audit --no-fund; npm run dev:hooks; else echo '-> .git not found, skipping dev setup'; fi\"",
         "post-install-cmd": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@bash -lc \"if [ -d .git ]; then composer dev:setup || true; else echo 'post-install: no .git, skipping dev:setup'; fi\""
+            "bash -lc \"if [ -d .git ]; then composer dev:setup || true; fi\""
+        ],
+        "post-update-cmd": [
+            "bash -lc \"if [ -d .git ]; then composer dev:setup || true; fi\""
         ]
     }
 }

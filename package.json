@@ -1,15 +1,15 @@
 {
-  "name": "m12/models",
+  "name": "m12-models",
   "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "dev:hooks": "node ./setup-hooks.js"
+  },
   "devDependencies": {
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "lint-staged": "^14.0.0",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0"
-  },
-  "scripts": {
-    "prepare": "husky install",
-    "dev:hooks": "npx husky install && npx husky add .husky/pre-commit \"npx lint-staged\" || true && npx husky add .husky/commit-msg \"npx commitlint --edit $1\" || true"
   },
   "lint-staged": {
     "*.php": [
