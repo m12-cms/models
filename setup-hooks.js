@@ -1,40 +1,42 @@
 #!/usr/bin/env node
+const fs = require("fs");
+const path = require("path");
 
-const fs = require('fs');
-const path = require('path');
-
-if (!fs.existsSync('.git')) {
-    console.log('No .git directory, skipping Husky hook setup');
+if (!fs.existsSync(".git")) {
+    console.log("No .git directory found — skipping Husky hook setup.");
     process.exit(0);
 }
 
-// Ensure .husky exists
-if (!fs.existsSync('.husky')) {
-    fs.mkdirSync('.husky');
+if (!fs.existsSync(".husky")) {
+    fs.mkdirSync(".husky", { recursive: true });
 }
 
-// Create pre-commit hook
-fs.writeFileSync(
-    path.join('.husky', 'pre-commit'),
-    `#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+// pre-commit: lint-staged (pint on changed php files)
+const preCommit = `#!/usr/bin/env sh
+npx --no-install lint-staged
+`;
+fs.writeFileSync(path.join(".husky", "pre-commit"), preCommit, { mode: 0o755 });
 
-npx lint-staged
-`
-);
+// commit-msg: validate commit message with commitlint
+const commitMsg = `#!/usr/bin/env sh
+npx --no-install commitlint --edit "$1"
+`;
+fs.writeFileSync(path.join(".husky", "commit-msg"), commitMsg, { mode: 0o755 });
 
-// Create commit-msg hook
-fs.writeFileSync(
-    path.join('.husky', 'commit-msg'),
-    `#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+// pre-push: heavy checks - phpstan, pint --test, phpunit
+const prePush = `#!/usr/bin/env sh
+# Run fast checks first
+echo "→ Running Pint (test mode)"
+vendor/bin/pint --test || { echo "Pint failed"; exit 1; }
 
-npx commitlint --edit "$1"
-`
-);
+echo "→ Running PHPStan"
+vendor/bin/phpstan analyse --memory-limit=1G || { echo "PHPStan failed"; exit 1; }
 
-// Make files executable
-fs.chmodSync('.husky/pre-commit', 0o755);
-fs.chmodSync('.husky/commit-msg', 0o755);
+echo "→ Running PHPUnit"
+vendor/bin/phpunit --testdox || { echo "PHPUnit failed"; exit 1; }
 
-console.log('Husky hooks created');
+exit 0
+`;
+fs.writeFileSync(path.join(".husky", "pre-push"), prePush, { mode: 0o755 });
+
+console.log("Husky hooks created: .husky/{pre-commit,commit-msg,pre-push}");
